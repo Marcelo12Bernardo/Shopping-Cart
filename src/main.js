@@ -4,8 +4,12 @@ import { fetchProductsList } from './helpers/fetchFunctions';
 import { createProductElement } from './helpers/shopFunctions';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
+const secaoProdutos = document.querySelector('.products');
 
-const computerList = await fetchProductsList('computador');
-computerList.forEach((element) => {
-  createProductElement(element);
-});
+window.onload = async () => {
+  const computerList = await fetchProductsList('computador');
+  computerList.forEach((element) => {
+    const novaSecao = createProductElement(element);
+    secaoProdutos.appendChild(novaSecao);
+  });
+};
