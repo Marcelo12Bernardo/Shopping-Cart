@@ -11,22 +11,22 @@ const removeLoad = () => {
   loading.remove();
 };
 
-const addLoad = () => {
-  const loading = document.createElement('span');
-  loading.className = 'loading';
-  loading.textContent = 'carregando...';
-  secaoProdutos.appendChild(loading);
-};
-
-const emiteError = () => {
-  const spanErro = document.createElement('span');
-  spanErro.className = 'error';
-  spanErro.textContent = 'Algum erro ocorreu, recarregue a página e tente novamente';
-  products.appendChild(spanErro);
+const addSpan = (className) => {
+  if (className === 'loading') {
+    const loading = document.createElement('span');
+    loading.className = 'loading';
+    loading.textContent = 'carregando...';
+    secaoProdutos.appendChild(loading);
+  } else {
+    const spanErro = document.createElement('span');
+    spanErro.className = 'error';
+    spanErro.textContent = 'Algum erro ocorreu, recarregue a página e tente novamente';
+    secaoProdutos.appendChild(spanErro);
+  }
 };
 
 window.onload = async () => {
-  addLoad();
+  addSpan('loading');
   try {
     const computerList = await fetchProductsList('computador');
     removeLoad();
@@ -36,6 +36,6 @@ window.onload = async () => {
     });
   } catch (e) {
     removeLoad();
-    emiteError();
+    addSpan('error');
   }
 };
