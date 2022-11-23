@@ -3,7 +3,7 @@ export const fetchProduct = () => {
 };
 
 export const fetchProductsList = async (termoBusca) => {
-  if (!termoBusca) return new Error('Termo de busca não informado');
+  if (!termoBusca) throw new Error('Termo de busca não informado');
   const URL = `https://api.mercadolibre.com/sites/MLB/search?q=${termoBusca}`;
   const result = await fetch(URL);
   const data = await result.json();
