@@ -6,9 +6,14 @@ import { createProductElement } from './helpers/shopFunctions';
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 const secaoProdutos = document.querySelector('.products');
 
-const removeLoad = () => {
-  const loading = document.querySelector('.loading');
-  loading.remove();
+const removeSpan = (className) => {
+  if (className === 'loading') {
+    const loading = document.querySelector('.loading');
+    loading.remove();
+  } else {
+    const error = document.querySelector('.error');
+    error.remove();
+  }
 };
 
 const addSpan = (className) => {
@@ -29,13 +34,13 @@ window.onload = async () => {
   addSpan('loading');
   try {
     const computerList = await fetchProductsList('computador');
-    removeLoad();
+    removeSpan('loading');
     computerList.forEach((element) => {
       const novaSecao = createProductElement(element);
       secaoProdutos.appendChild(novaSecao);
     });
   } catch (e) {
-    removeLoad();
+    // removeSpan('loading');
     addSpan('error');
   }
 };
