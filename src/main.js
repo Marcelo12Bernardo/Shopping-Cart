@@ -17,6 +17,14 @@ const addLoad = () => {
   loading.textContent = 'carregando...';
   secaoProdutos.appendChild(loading);
 };
+
+const emiteError = () => {
+  const spanErro = document.createElement('span');
+  spanErro.className = 'error';
+  spanErro.textContent = 'Algum erro ocorreu, recarregue a página e tente novamente';
+  products.appendChild(spanErro);
+};
+
 window.onload = async () => {
   addLoad();
   try {
@@ -26,8 +34,8 @@ window.onload = async () => {
       const novaSecao = createProductElement(element);
       secaoProdutos.appendChild(novaSecao);
     });
-  } catch (erro) {
+  } catch (e) {
     removeLoad();
-    // Error();
+    emiteError();
   }
 };
