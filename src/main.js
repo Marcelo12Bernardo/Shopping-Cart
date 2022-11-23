@@ -40,7 +40,6 @@ window.onload = async () => {
       secaoProdutos.appendChild(novaSecao);
     });
   } catch (e) {
-    // removeSpan('loading');
     addSpan('error');
   }
 };

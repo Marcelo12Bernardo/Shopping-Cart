@@ -25,11 +25,10 @@ describe('Teste a função fetchProductsList', () => {
   });
 
   it('Testa se retorna um erro quando não passa argumento', async () => {
-    const objResposta = await fetchProductsList();
-    const erroEsperado = new Error('Termo de busca não informado');
-    expect(objResposta).toEqual(erroEsperado);
+    try {
+      // await fetchProductsList();
+    } catch(e) {
+      expect(e.message).toMatch('Termo de busca não informado');
+    }
   });
-
-  // it('...', () => {
-  // });
 });
