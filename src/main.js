@@ -1,7 +1,7 @@
 import { searchCep } from './helpers/cepFunctions';
 import './style.css';
-import { fetchProductsList } from './helpers/fetchFunctions';
-import { createProductElement } from './helpers/shopFunctions';
+// import { fetchProductsList } from './helpers/fetchFunctions';
+// import { createProductElement } from './helpers/shopFunctions';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 const secaoProdutos = document.querySelector('.products');
@@ -24,4 +24,5 @@ window.onload = async () => {
   //   secaoProdutos.appendChild(novaSecao);
   // });
   addLoad();
+  removeLoad();
 };
