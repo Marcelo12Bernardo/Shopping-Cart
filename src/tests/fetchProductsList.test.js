@@ -2,7 +2,6 @@ import './mocks/fetchSimulator';
 import { fetchProductsList } from '../helpers/fetchFunctions';
 import computadorSearch from './mocks/search';
 
-// implemente seus testes aqui
 describe('Teste a função fetchProductsList', () => {
   const lista = fetchProductsList;
   it('fetchProductsList é uma função', () => {
@@ -26,7 +25,7 @@ describe('Teste a função fetchProductsList', () => {
 
   it('Testa se retorna um erro quando não passa argumento', async () => {
     try {
-      // await fetchProductsList();
+      await fetchProductsList();
     } catch(e) {
       expect(e.message).toMatch('Termo de busca não informado');
     }
