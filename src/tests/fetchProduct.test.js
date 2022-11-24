@@ -24,9 +24,11 @@ describe('Teste a função fetchProduct', () => {
   });
 
   it('Testa se retorna um erro quando não passa argumento', async () => {
-    const objResposta = await fetchProduct();
-    const erroEsperado = new Error('ID não informado');
-    expect(objResposta).toEqual(erroEsperado);
+    try {
+      await fetchProduct();
+    } catch(e) {
+      expect(e.message).toMatch('ID não informado');
+    }
   });
 
 });
