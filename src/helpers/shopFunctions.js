@@ -1,10 +1,13 @@
+// eslint-disable-next-line import/no-duplicates
 import { removeCartID } from './cartFunctions';
+// eslint-disable-next-line import/no-duplicates
+import { saveCartID } from './cartFunctions';
+import { fetchProduct } from './fetchFunctions';
 
 // Esses comentários que estão antes de cada uma das funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições!
 
 // Fique a vontade para modificar o código já escrito e criar suas próprias funções!
-
 /**
  * Função responsável por criar e retornar o elemento de imagem do produto.
  * @param {string} imageSource - URL da imagem.
@@ -121,6 +124,13 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
     'product__add',
     'Adicionar ao carrinho!',
   );
+  cartButton.addEventListener('click', async () => {
+    const carrinho = document.querySelector('.cart__products');
+    saveCartID(id);
+    const dadosProduto = await fetchProduct(id);
+    const itemCar = createCartProductElement(dadosProduto);
+    carrinho.appendChild(itemCar);
+  });
   section.appendChild(cartButton);
 
   return section;
