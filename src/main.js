@@ -1,6 +1,6 @@
 import { searchCep } from './helpers/cepFunctions';
 import './style.css';
-import { fetchProductsList, fetchProduct} from './helpers/fetchFunctions';
+import { fetchProductsList, fetchProduct } from './helpers/fetchFunctions';
 import { createProductElement, createCartProductElement } from './helpers/shopFunctions';
 import { getSavedCartIDs } from './helpers/cartFunctions';
 
